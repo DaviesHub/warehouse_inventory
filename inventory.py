@@ -192,7 +192,8 @@ def search_shoe():
             print(tabulate(outer_list, headings))
 
             break
-
+    
+    print("Result empty. Shoe not found.")
 
 def value_per_item():
     '''
