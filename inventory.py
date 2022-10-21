@@ -237,48 +237,44 @@ def highest_qty():
             shoe_list[idx_of_max].cost, \
             shoe_list[idx_of_max].quantity))
 
+
 #==========Main Menu=============
-while True:
-    # presenting the menu to the user.
-    menu = input('''Select one of the following options from the menu below:
-r - Read shoes data
-cs - Capture new shoes data
-va - View all shoes
-rs - Re-stock shoes
-ss - Search for shoes
-gv - Get stock value of each product
-hq - Get the highest quantity to be marked for sale
-e - Exit
-: ''').casefold()
+def main():
+    '''Main function which presents the main menu to the user'''
 
-    if menu == "r":
-        read_shoes_data()
+    while True:
+        # presenting the menu to the user.
+        menu = input('''Select one of the following options from the menu below:
+    r - Read shoes data
+    cs - Capture new shoes data
+    va - View all shoes
+    rs - Re-stock shoes
+    ss - Search for shoes
+    gv - Get stock value of each product
+    hq - Get the highest quantity to be marked for sale
+    e - Exit
+    : ''').casefold()
 
-    elif menu == "cs":
-        capture_shoes()
+        if menu == "r":
+            read_shoes_data()
 
-    elif menu == "va":
-        view_all()
+        elif menu == "cs":
+            capture_shoes()
 
-    elif menu == "rs":
-        re_stock()
+        elif menu == "va":
+            view_all()
 
-    elif menu == "ss":
-        search_shoe()
+        elif menu == "rs":
+            re_stock()
 
-    elif menu == "gv":
-        value_per_item()
+        elif menu == "ss":
+            search_shoe()
 
-    elif menu == "e":
-        exit()
+        elif menu == "gv":
+            value_per_item()
 
-    else:
-        print("Invalid option")
+        elif menu == "e":
+            exit()
 
-
-
-from tabulate import tabulate
-
-xc = [["drake", "gods plan"]]
-head = ["artist", "track name"]
-print(tabulate(xc, head))
+        else:
+            print("Invalid option")
