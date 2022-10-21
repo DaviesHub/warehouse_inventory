@@ -97,6 +97,8 @@ def view_all():
     function.
     '''
 
+    read_shoes_data()
+
     outer_list = [] # Initialize list to hold shoe object descriptions
     headings = ["Country", "Code", "Product", "Cost", "Quantity"] # Initialize headers for table 
     for shoe in shoe_list:
@@ -278,3 +280,7 @@ def main():
 
         else:
             print("Invalid option")
+
+
+# Call main.
+main()
