@@ -233,7 +233,8 @@ def highest_qty():
     for shoe_obj in shoe_list:
         qty_list.append(int(shoe_obj.quantity))
     idx_of_max = qty_list.index(max(qty_list))
-    print("The following product is for sale:\n{}, {}, {}, {}, {}"\
+    print("The following product is for sale:\nCountry: {}\
+    \nCode: {}\nProduct: {}\nCost: {}\nQuantity: {}"\
     .format(shoe_list[idx_of_max].country, \
             shoe_list[idx_of_max].code, \
             shoe_list[idx_of_max].product, \
