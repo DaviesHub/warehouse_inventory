@@ -183,7 +183,7 @@ def search_shoe():
 
     shoe_code = input("Enter the product code: ").upper()
     print("searching in database...")
-    sentinel = True # Flag variable to print message based on the value of the search
+    sentinel = True # Flag variable to print message based on the outcome of the search
     for shoe in shoe_list:
         if shoe.code == shoe_code:
             outer_list = [] # Initialize list to hold shoe object description
