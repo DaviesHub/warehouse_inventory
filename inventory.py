@@ -116,7 +116,6 @@ def re_stock():
     '''
 
     # Call read_shoes_data to create shoe object and create list
-    shoe_list = []
     read_shoes_data()
 
     # Get the shoe object with the lowest quantity
@@ -125,7 +124,8 @@ def re_stock():
     for shoe_obj in shoe_list:
         qty_list.append(int(shoe_obj.quantity))
     idx_of_min = qty_list.index(min(qty_list))
-    print("The following product has the lowest quantity:\n{}, {}, {}, {}, {}"\
+    print("The following product has the lowest quantity:\nCountry: {}\
+    \nCode: {}\nProduct: {}\nCost: {}\nQuantity: {}"\
     .format(shoe_list[idx_of_min].country, \
             shoe_list[idx_of_min].code, \
             shoe_list[idx_of_min].product, \
@@ -158,7 +158,7 @@ def re_stock():
                 new_line[-1] = shoe_list[idx_of_min].get_quantity() + "\n"
                 new_line = ",".join(new_line)
                 list_of_lines[idx_of_min] = new_line
-                file_h = open("r.txt", "w")
+                file_h = open("inventory.txt", "w")
                 file_h.writelines(list_of_lines)
                 file_h.close()
 
