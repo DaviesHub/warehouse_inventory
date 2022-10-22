@@ -199,19 +199,19 @@ def search_shoe():
 def value_per_item():
     '''
     This function will calculate the total value for each item.
-    Please keep the formula for value in mind: value = cost * quantity.
-    Print this information on the console for all the shoes.
     '''
     # Call read_shoes_data to create shoe object and create list.
-    shoe_list = []
     outer_list = [] # Initialize list to hold shoe object descriptions to be tabulated
-    headings = ["Product", "Code", "Value"]
+    headings = ["Country", "Code", "Product", "Cost", "Quantity", "Value"]
     read_shoes_data()
 
     for shoe in shoe_list:
         value_map = []
-        value_map.append(shoe.product)
+        value_map.append(shoe.country)
         value_map.append(shoe.code)
+        value_map.append(shoe.product)
+        value_map.append(shoe.cost)
+        value_map.append(shoe.quantity)
         stock_value = round((int(shoe.cost) * int(shoe.quantity)),2)
         value_map.append(str(stock_value))
         outer_list.append(value_map)
@@ -225,7 +225,6 @@ def highest_qty():
     print this shoe as being for sale.
     '''
     # Call read_shoes_data to create shoe object and create list
-    shoe_list = []
     read_shoes_data()
 
     # Get the shoe object with the highest quantity
