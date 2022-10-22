@@ -179,21 +179,22 @@ def search_shoe():
      using the shoe code and return this object so that it will be printed.
     '''
     # Call read_shoes_data to create shoe object and create list
-    shoe_list = []
     read_shoes_data()
 
     shoe_code = input("Enter the product code: ").upper()
     print("searching in database...")
+    sentinel = True # Flag variable to print message based on the value of the search
     for shoe in shoe_list:
         if shoe.code == shoe_code:
             outer_list = [] # Initialize list to hold shoe object description
             headings = ["Country", "Code", "Product", "Cost", "Quantity"] # Initialize headers for table
             outer_list.append(shoe.__str__())
+            sentinel = False
             print(tabulate(outer_list, headings))
-
             break
-    
-    print("Result empty. Shoe not found.")
+    if sentinel == True:
+        print("Result empty. Shoe not found")
+
 
 def value_per_item():
     '''
