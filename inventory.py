@@ -276,6 +276,9 @@ def main():
         elif menu == "gv":
             value_per_item()
 
+        elif menu == "hq":
+            highest_qty()
+
         elif menu == "e":
             exit()
 
