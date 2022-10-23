@@ -37,9 +37,6 @@ class Shoe():
         self.quantity = str(int(self.quantity) + qty)
 
 
-shoe_list = []    # The list will be used to store a list of shoe objects.
-
-
 #==========Functions outside the class==============
 def read_shoes_data():
     '''
@@ -47,6 +44,8 @@ def read_shoes_data():
     and read the data from this file, then create a shoes object with this data
     and append this object into the shoes list.
     '''
+
+    shoe_list = [] # Initialize empty shoe list to store shoe objects
 
     fhand = None
     try:
@@ -59,10 +58,12 @@ def read_shoes_data():
             shoe_list.append(shoe_obj)
             
     except FileNotFoundError:
-        print("The inventory file does not exist. Add the file and try again")
+        print("The inventory file [inventory.txt] does not exist. Add the file and try again")
     finally:
         if fhand is not None:
             fhand.close()
+
+    return shoe_list
 
 
 def capture_shoes():
@@ -71,6 +72,8 @@ def capture_shoes():
     about a shoe and use this data to create a shoe object
     and append this object inside the shoe list.
     '''
+
+    shoe_list = read_shoes_data() # Read shoes data to create shoes list.
 
     country = input("Enter the country: ").title()
     code = input("Enter product code: ").upper()
@@ -97,8 +100,7 @@ def view_all():
     function.
     '''
 
-    read_shoes_data()
-
+    shoe_list = read_shoes_data() # Read shoes data to create shoes list.
     outer_list = [] # Initialize list to hold shoe object descriptions
     headings = ["Country", "Code", "Product", "Cost", "Quantity"] # Initialize headers for table 
     for shoe in shoe_list:
@@ -115,8 +117,7 @@ def re_stock():
     This quantity should be updated on the file for this shoe.
     '''
 
-    # Call read_shoes_data to create shoe object and create list
-    read_shoes_data()
+    shoe_list = read_shoes_data() # Read shoes data to create shoes list.
 
     # Get the shoe object with the lowest quantity
     # The quantites are stored in a list and the index of the minimum is found 
@@ -153,11 +154,11 @@ def re_stock():
             # Update changes to quantity in the inventory file
             try:
                 file_h = open("inventory.txt", "r")
-                list_of_lines = file_h.readlines()[1:]
-                new_line = list_of_lines[idx_of_min].split(",")
-                new_line[-1] = shoe_list[idx_of_min].get_quantity() + "\n"
+                list_of_lines = file_h.readlines()
+                new_line = list_of_lines[idx_of_min + 1].split(",")
+                new_line[-1] = shoe_list[idx_of_min + 1].get_quantity() + "\n"
                 new_line = ",".join(new_line)
-                list_of_lines[idx_of_min] = new_line
+                list_of_lines[idx_of_min + 1] = new_line
                 file_h = open("inventory.txt", "w")
                 file_h.writelines(list_of_lines)
                 file_h.close()
@@ -178,9 +179,8 @@ def search_shoe():
      This function will search for a shoe from the list
      using the shoe code and return this object so that it will be printed.
     '''
-    # Call read_shoes_data to create shoe object and create list
-    read_shoes_data()
 
+    shoe_list = read_shoes_data() # Read shoes data to create shoes list.
     shoe_code = input("Enter the product code: ").upper()
     print("searching in database...")
     sentinel = True # Flag variable to print message based on the outcome of the search
@@ -200,7 +200,8 @@ def value_per_item():
     '''
     This function will calculate the total value for each item.
     '''
-    # Call read_shoes_data to create shoe object and create list.
+    
+    shoe_list = read_shoes_data() # Read shoes data to create shoes list.
     outer_list = [] # Initialize list to hold shoe object descriptions to be tabulated
     headings = ["Country", "Code", "Product", "Cost", "Quantity", "Value"]
     read_shoes_data()
@@ -224,8 +225,8 @@ def highest_qty():
     This function determines the product with the highest quantity and
     print this shoe as being for sale.
     '''
-    # Call read_shoes_data to create shoe object and create list
-    read_shoes_data()
+
+    shoe_list = read_shoes_data() # Read shoes data to create shoes list.
 
     # Get the shoe object with the highest quantity
     # The quantites are stored in a list and the index of the maximum is found 
