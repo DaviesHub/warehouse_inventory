@@ -88,7 +88,7 @@ def capture_shoes():
     try:
         fhand = open("inventory.txt", "a")
         fhand.write(country + "," + code + "," + product + "," + cost + "," + quantity + "\n")
-        fhand.close
+        fhand.close()
     except FileNotFoundError:
         print("The inventory file does not exist. Add the file and try again")
 
